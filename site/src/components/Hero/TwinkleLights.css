@@ -1,0 +1,65 @@
+.twinkle-lights {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.twinkle-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.5);
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.twinkle-dot--warm {
+  background: radial-gradient(circle, #fff6e0 0%, #f0cf8e 45%, transparent 75%);
+  box-shadow: 0 0 7px 1.5px rgba(240, 207, 142, 0.75);
+}
+
+.twinkle-dot--bright {
+  background: radial-gradient(circle, #ffffff 0%, #ffe9b8 35%, #d8b878 60%, transparent 78%);
+  box-shadow: 0 0 12px 3px rgba(255, 224, 170, 0.85);
+  animation-name: twinkle-pop;
+}
+
+.twinkle-dot--cool {
+  background: radial-gradient(circle, #ffe9c2 0%, #d8b878 50%, transparent 75%);
+  box-shadow: 0 0 5px 1.5px rgba(216, 184, 120, 0.5);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: var(--peak, 0.8);
+    transform: scale(1);
+  }
+}
+
+@keyframes twinkle-pop {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  45% {
+    opacity: var(--peak, 1);
+    transform: scale(1.3);
+  }
+  60% {
+    opacity: calc(var(--peak, 1) * 0.7);
+    transform: scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twinkle-lights {
+    display: none;
+  }
+}

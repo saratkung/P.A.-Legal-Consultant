@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Monogram } from "../shared/Logo.jsx";
 import { prefersReducedMotion } from "../../lib/animations.js";
 import skylineImg from "../../assets/images/bangkok-skyline.jpg";
+import TwinkleLights from "./TwinkleLights.jsx";
 import "./Hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -121,6 +122,7 @@ export default function Hero() {
         <div className="hero__flare" ref={flareRef} aria-hidden="true" />
       </div>
       <div className="hero__overlay" ref={overlayRef} />
+      <TwinkleLights />
 
       <div className="container hero__content">
         <div className="hero__mono" ref={monoRef}>
