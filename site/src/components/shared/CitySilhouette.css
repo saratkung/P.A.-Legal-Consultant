@@ -1,0 +1,14 @@
+.city-silhouette {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55%;
+  min-height: 320px;
+}
+
+.city-silhouette--line {
+  height: 34%;
+  min-height: 160px;
+  opacity: 0.55;
+}

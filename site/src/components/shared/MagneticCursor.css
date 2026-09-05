@@ -1,0 +1,33 @@
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.35s var(--ease-power3), height 0.35s var(--ease-power3),
+    background 0.35s var(--ease-power3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-dot--button,
+.cursor-dot--service,
+.cursor-dot--image {
+  width: 64px;
+  height: 64px;
+  background: rgba(var(--gold-rgb), 0.12);
+}
+
+.cursor-dot__glyph {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  white-space: nowrap;
+}

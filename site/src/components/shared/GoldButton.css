@@ -1,0 +1,44 @@
+.gold-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 17px 30px;
+  white-space: nowrap;
+  transition: background var(--dur-s) var(--ease-power3),
+    color var(--dur-s) var(--ease-power3),
+    border-color var(--dur-s) var(--ease-power3);
+}
+
+.gold-btn--outline {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  background: transparent;
+}
+
+.gold-btn--outline:hover {
+  background: var(--gold);
+  color: var(--midnight-navy);
+}
+
+.gold-btn--ghost {
+  color: currentColor;
+  border: 1px solid rgba(var(--gold-rgb), 0.4);
+  background: transparent;
+}
+
+.gold-btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.gold-btn--text {
+  padding: 0;
+  border: none;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}

@@ -1,0 +1,85 @@
+.services {
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+.services__intro {
+  max-width: 640px;
+  color: var(--charcoal);
+  opacity: 0.8;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.services__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 40px;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 0;
+  transition: padding var(--dur-s) var(--ease-power3);
+}
+
+.service-row__divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top-color: rgba(var(--gold-rgb), 0.3);
+}
+
+.service-row__number {
+  color: var(--gold);
+}
+
+.service-row__title {
+  color: var(--dark-blue);
+  transition: transform var(--dur-s) var(--ease-power3);
+}
+
+.service-row__desc {
+  color: var(--charcoal);
+  opacity: 0.55;
+  transition: opacity var(--dur-s) var(--ease-power3);
+}
+
+.service-row__indicator {
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--dur-s) var(--ease-power3), transform var(--dur-s) var(--ease-power3);
+  justify-self: end;
+}
+
+.service-row:hover {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.service-row:hover .service-row__title {
+  transform: translateX(8px);
+}
+
+.service-row:hover .service-row__desc {
+  opacity: 0.85;
+}
+
+.service-row:hover .service-row__indicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 800px) {
+  .service-row {
+    grid-template-columns: 40px 1fr 28px;
+    row-gap: 8px;
+  }
+  .service-row__desc {
+    grid-column: 2 / 3;
+  }
+}

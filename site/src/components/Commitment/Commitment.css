@@ -1,0 +1,37 @@
+.commitment {
+  background: var(--deep-navy);
+  text-align: center;
+  justify-content: center;
+}
+
+.commitment__skyline {
+  opacity: 0.4;
+}
+
+.commitment__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commitment h2 {
+  color: var(--ivory);
+}
+
+.commitment__line {
+  margin: 32px auto 36px;
+}
+
+.commitment p {
+  color: var(--warm-white);
+  max-width: 560px;
+}
+
+.commitment__lead {
+  color: var(--soft-gold);
+  font-style: italic;
+}

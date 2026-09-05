@@ -1,0 +1,35 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.monogram {
+  flex-shrink: 0;
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo__name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  color: var(--ivory);
+}
+
+.logo--compact .logo__name {
+  font-size: 12px;
+}
+
+.logo__tagline {
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
