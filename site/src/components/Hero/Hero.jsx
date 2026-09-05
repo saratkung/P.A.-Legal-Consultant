@@ -80,12 +80,17 @@ export default function Hero() {
         delay: 1.5,
       });
 
+      // hold the building on screen while the exit grade plays, then release
+      // into About — the pin is what makes the skyline feel like it "stays".
       const heroScroll = gsap.timeline({
         scrollTrigger: {
           trigger: rootRef.current,
           start: "top top",
-          end: "bottom top",
+          end: "+=90%",
           scrub: true,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
         },
       });
 

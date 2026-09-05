@@ -6,6 +6,8 @@
 
 .monogram {
   flex-shrink: 0;
+  width: auto;
+  display: block;
 }
 
 .logo__text {
