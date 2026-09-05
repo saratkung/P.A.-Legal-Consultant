@@ -15,7 +15,7 @@ export function Monogram({ size = 40 }) {
         x="22"
         y="30"
         textAnchor="middle"
-        fontFamily="'Cormorant Garamond', serif"
+        fontFamily="'Bodoni Moda', serif"
         fontSize="20"
         fill="var(--gold)"
       >
