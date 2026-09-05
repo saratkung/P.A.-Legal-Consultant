@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
-import { revealUp, drawLine, imageReveal } from "../../lib/animations.js";
+import { revealUp, drawLine, imageReveal, sectionRise } from "../../lib/animations.js";
 import skylineImg from "../../assets/images/bangkok-skyline.jpg";
 import "./About.css";
 
@@ -10,6 +10,7 @@ export default function About() {
   const lineRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(rootRef.current);
     revealUp(rootRef.current, ".about__reveal", { stagger: 0.14 });
     drawLine(rootRef.current, lineRef.current, { to: 80 });
     imageReveal(rootRef.current, imgRef.current);

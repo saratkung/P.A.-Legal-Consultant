@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
-import { revealUp } from "../../lib/animations.js";
+import { revealUp, sectionRise } from "../../lib/animations.js";
 import "./Services.css";
 
 const SERVICES = [
@@ -19,6 +19,7 @@ export default function Services() {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(rootRef.current);
     revealUp(rootRef.current, ".service-row", { stagger: 0.06, y: 24 });
   }, []);
 

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionLabel from "../shared/SectionLabel.jsx";
-import { prefersReducedMotion } from "../../lib/animations.js";
+import { prefersReducedMotion, sectionRise } from "../../lib/animations.js";
 import "./ClientReasons.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,8 +16,10 @@ const REASONS = [
 
 export default function ClientReasons() {
   const rootRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(sectionRef.current);
     if (prefersReducedMotion()) {
       gsap.set(".reason-row", { opacity: 1, y: 0 });
       return;
@@ -46,7 +48,7 @@ export default function ClientReasons() {
   }, []);
 
   return (
-    <section id="why-us" className="reasons section">
+    <section id="why-us" ref={sectionRef} className="reasons section">
       <div className="container">
         <SectionLabel number="04" light>
           Why Clients Work With Us

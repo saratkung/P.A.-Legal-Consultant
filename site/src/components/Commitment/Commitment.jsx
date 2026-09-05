@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { revealUp, drawLine } from "../../lib/animations.js";
+import { revealUp, drawLine, sectionRise } from "../../lib/animations.js";
 import CitySilhouette from "../shared/CitySilhouette.jsx";
 import "./Commitment.css";
 
@@ -8,12 +8,13 @@ export default function Commitment() {
   const lineRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(rootRef.current);
     revealUp(rootRef.current, ".commitment__reveal", { stagger: 0.15, y: 26 });
     drawLine(rootRef.current, lineRef.current, { to: 96 });
   }, []);
 
   return (
-    <section id="commitment" className="commitment section section--full">
+    <section id="commitment" ref={rootRef} className="commitment section section--full">
       <CitySilhouette variant="line" className="commitment__skyline" />
       <div className="container commitment__inner">
         <h2 className="display-xl commitment__reveal">

@@ -14,9 +14,11 @@ export function useLenis() {
     if (reduceMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
+      duration: 1.35,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
       smoothWheel: true,
+      wheelMultiplier: 0.92,
+      touchMultiplier: 1.1,
     });
 
     lenis.on("scroll", ScrollTrigger.update);

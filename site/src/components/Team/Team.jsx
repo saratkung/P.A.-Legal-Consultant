@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
-import { revealUp } from "../../lib/animations.js";
+import { revealUp, sectionRise } from "../../lib/animations.js";
 import "./Team.css";
 
 const TEAM = [
@@ -12,6 +12,7 @@ export default function Team() {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(rootRef.current);
     revealUp(rootRef.current, ".team-card", { stagger: 0.15, y: 30 });
   }, []);
 

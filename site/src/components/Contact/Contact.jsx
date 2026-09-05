@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import GoldButton from "../shared/GoldButton.jsx";
-import { revealUp } from "../../lib/animations.js";
+import { revealUp, sectionRise } from "../../lib/animations.js";
 import "./Contact.css";
 
 export default function Contact() {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    sectionRise(rootRef.current);
     revealUp(rootRef.current, ".contact__reveal", { stagger: 0.12 });
   }, []);
 

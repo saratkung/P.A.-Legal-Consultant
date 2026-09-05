@@ -72,6 +72,37 @@ export function drawLine(scope, target, opts = {}) {
 }
 
 /**
+ * Cinematic whole-section entrance: the section rises and un-masks itself
+ * as it crosses into view, like a shutter lifting. Applied to a section's
+ * own root element so transitions between sections feel authored, not just
+ * "content appears."
+ */
+export function sectionRise(el, opts = {}) {
+  if (!el) return;
+
+  if (prefersReducedMotion()) {
+    gsap.set(el, { clipPath: "inset(0% 0% 0% 0%)", y: 0, clearProps: "transform" });
+    return;
+  }
+
+  gsap.fromTo(
+    el,
+    { clipPath: "inset(9% 0% 0% 0%)", y: 46 },
+    {
+      clipPath: "inset(0% 0% 0% 0%)",
+      y: 0,
+      duration: opts.duration ?? 1.4,
+      ease: EASE,
+      scrollTrigger: {
+        trigger: el,
+        start: opts.start ?? "top 92%",
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
+}
+
+/**
  * Scale an image from a slightly zoomed state down to 1 as it enters view.
  */
 export function imageReveal(scope, target, opts = {}) {

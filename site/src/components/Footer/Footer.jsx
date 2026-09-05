@@ -1,11 +1,18 @@
+import { useEffect, useRef } from "react";
 import { Monogram } from "../shared/Logo.jsx";
+import { sectionRise } from "../../lib/animations.js";
 import "./Footer.css";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    sectionRise(rootRef.current, { start: "top 98%" });
+  }, []);
 
   return (
-    <footer className="footer">
+    <footer ref={rootRef} className="footer">
       <div className="container footer__inner">
         <div className="footer__brand">
           <Monogram size={52} />
