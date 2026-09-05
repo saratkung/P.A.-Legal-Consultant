@@ -95,9 +95,9 @@ export default function Hero() {
       });
 
       heroScroll
-        .to(bgRef.current, { scale: 1.22, ease: "none" }, 0)
-        .to(bgImgRef.current, { filter: "blur(5px) saturate(0.85) brightness(0.85)", ease: "none" }, 0)
-        .to(overlayRef.current, { opacity: 0.96, ease: "none" }, 0)
+        .to(bgRef.current, { scale: 1.16, ease: "none" }, 0)
+        .to(bgImgRef.current, { filter: "saturate(1.05) brightness(1.02)", ease: "none" }, 0)
+        .to(overlayRef.current, { opacity: 0.4, ease: "none" }, 0)
         .to(rootRef.current.querySelector(".hero__content"), { yPercent: -12, opacity: 0.2, ease: "none" }, 0);
     }, rootRef);
 
