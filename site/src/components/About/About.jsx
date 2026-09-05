@@ -1,42 +1,35 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import { Monogram } from "../shared/Logo.jsx";
-import TempleLineArt from "../shared/TempleLineArt.jsx";
-import { revealUp, drawLine, imageReveal, sectionRise } from "../../lib/animations.js";
-import skylineImg from "../../assets/images/bangkok-skyline.jpg";
+import { revealUp, drawLine, sectionRise } from "../../lib/animations.js";
 import "./About.css";
 
 export default function About() {
   const rootRef = useRef(null);
-  const imgRef = useRef(null);
   const lineRef = useRef(null);
 
   useEffect(() => {
     sectionRise(rootRef.current);
     revealUp(rootRef.current, ".about__reveal", { stagger: 0.14 });
     drawLine(rootRef.current, lineRef.current, { to: 80 });
-    imageReveal(rootRef.current, imgRef.current);
   }, []);
 
   return (
     <section id="about" data-nav-section="about" ref={rootRef} className="about section">
-      <span className="about__watermark" aria-hidden="true">PA</span>
+      <div className="about__side">
+        <div className="about__side-logo">
+          <Monogram size={64} />
+        </div>
+        <div className="about__side-words">
+          <span>Counsel</span>
+          <span className="about__side-rule" />
+          <span>Strategy</span>
+          <span className="about__side-rule" />
+          <span>Solutions</span>
+        </div>
+      </div>
 
       <div className="container about__grid">
-        <aside className="about__side">
-          <div className="about__side-logo">
-            <Monogram size={64} />
-          </div>
-          <div className="about__side-words">
-            <span>Counsel</span>
-            <span className="about__side-rule" />
-            <span>Strategy</span>
-            <span className="about__side-rule" />
-            <span>Solutions</span>
-          </div>
-          <TempleLineArt className="about__side-temple" />
-        </aside>
-
         <div className="about__copy">
           <SectionLabel number="01">About Us</SectionLabel>
 
@@ -74,24 +67,6 @@ export default function About() {
             strategy built around their objectives, and ends with a
             practical solution they can act on.
           </p>
-        </div>
-
-        <div className="about__visual" data-cursor="image">
-          <div className="about__image-frame">
-            <div className="about__image" ref={imgRef}>
-              <img
-                src={skylineImg}
-                alt="Bangkok skyline, the city where P.A. Legal Consultant practices"
-                className="about__image-photo"
-                loading="lazy"
-              />
-              <div className="about__image-tint" />
-            </div>
-          </div>
-          <div className="about__caption">
-            <span className="about__caption-mark">P A</span>
-            <span className="about__caption-text">Legal Consultant</span>
-          </div>
         </div>
       </div>
     </section>
