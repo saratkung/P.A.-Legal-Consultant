@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CitySilhouette from "../shared/CitySilhouette.jsx";
 import { Monogram } from "../shared/Logo.jsx";
 import { prefersReducedMotion } from "../../lib/animations.js";
+import skylineImg from "../../assets/images/bangkok-skyline.jpg";
 import "./Hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -69,7 +69,7 @@ export default function Hero() {
       });
 
       gsap.to(overlayRef.current, {
-        opacity: 0.85,
+        opacity: 0.94,
         ease: "none",
         scrollTrigger: {
           trigger: rootRef.current,
@@ -95,7 +95,13 @@ export default function Hero() {
       className="hero section section--full"
     >
       <div className="hero__bg" ref={bgRef}>
-        <CitySilhouette />
+        <img
+          src={skylineImg}
+          alt="Bangkok skyline at night"
+          className="hero__bg-img"
+          loading="eager"
+          fetchPriority="high"
+        />
       </div>
       <div className="hero__overlay" ref={overlayRef} />
 

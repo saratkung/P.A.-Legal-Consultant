@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import { revealUp, drawLine, imageReveal } from "../../lib/animations.js";
+import skylineImg from "../../assets/images/bangkok-skyline.jpg";
 import "./About.css";
 
 export default function About() {
@@ -51,7 +52,13 @@ export default function About() {
 
         <div className="about__visual" data-cursor="image">
           <div className="about__image" ref={imgRef}>
-            <div className="about__image-grid" />
+            <img
+              src={skylineImg}
+              alt="Bangkok skyline, the city where P.A. Legal Consultant practices"
+              className="about__image-photo"
+              loading="lazy"
+            />
+            <div className="about__image-tint" />
             <span className="about__image-mark">PA</span>
           </div>
         </div>
