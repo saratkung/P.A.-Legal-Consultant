@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionLabel from "../shared/SectionLabel.jsx";
@@ -25,15 +25,26 @@ const STEPS = [
   },
 ];
 
+function computePinned() {
+  return !prefersReducedMotion() && window.innerWidth > 720;
+}
+
 export default function Approach() {
   const trackRef = useRef(null);
   const pinRef = useRef(null);
+  const seamRef = useRef(null);
   const wordRefs = useRef([]);
   const textRefs = useRef([]);
   const activeIndexRef = useRef(0);
-  const [pinned] = useState(
-    () => !prefersReducedMotion() && window.innerWidth > 720
-  );
+  const [pinned, setPinned] = useState(computePinned);
+
+  // the pinned/static choice depends on viewport width — recompute it if the
+  // window is resized instead of freezing whatever it was on first mount
+  useEffect(() => {
+    const onResize = () => setPinned(computePinned());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useLayoutEffect(() => {
     if (!pinned) return;
@@ -44,6 +55,27 @@ export default function Approach() {
 
       words.forEach((w, i) => w.classList.toggle("approach__step--active", i === 0));
       texts.forEach((t, i) => t.classList.toggle("approach__text--active", i === 0));
+
+      // the entrance is locked 1:1 to scroll across the exact distance it
+      // takes this section to reach the top of the viewport — the moment it
+      // finishes is exactly when the pin below takes over, so About lifting
+      // into Approach reads as one unbroken motion.
+      gsap.set(pinRef.current, { clipPath: "inset(14% 0% 0% 0%)", y: 70 });
+      gsap.set(seamRef.current, { scaleX: 0, opacity: 0 });
+
+      const entrance = gsap.timeline({
+        scrollTrigger: {
+          trigger: trackRef.current,
+          start: "top bottom",
+          end: "top top",
+          scrub: 0.35,
+        },
+      });
+
+      entrance
+        .to(pinRef.current, { clipPath: "inset(0% 0% 0% 0%)", y: 0, ease: "none", duration: 1 }, 0)
+        .to(seamRef.current, { scaleX: 1, opacity: 1, ease: "none", duration: 0.5 }, 0)
+        .to(seamRef.current, { opacity: 0, ease: "none", duration: 0.3 }, 0.6);
 
       const st = ScrollTrigger.create({
         trigger: trackRef.current,
@@ -74,6 +106,8 @@ export default function Approach() {
       className={`approach ${pinned ? "approach--pinned" : ""}`}
     >
       <div ref={pinRef} className="approach__pin section--full">
+        {pinned && <div className="approach__seam" ref={seamRef} aria-hidden="true" />}
+
         <div className="container approach__inner">
           <SectionLabel number="02" light>
             Our Approach
