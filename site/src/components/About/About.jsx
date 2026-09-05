@@ -14,7 +14,7 @@ export default function About() {
   const seamRef = useRef(null);
 
   useEffect(() => {
-    sectionRise(rootRef.current);
+    sectionRise(rootRef.current, { start: "top bottom" });
     revealUp(rootRef.current, ".about__reveal", { stagger: 0.14 });
     drawLine(rootRef.current, lineRef.current, { to: 80 });
 
@@ -30,7 +30,7 @@ export default function About() {
           ease: "expo.out",
           scrollTrigger: {
             trigger: rootRef.current,
-            start: "top 92%",
+            start: "top bottom",
             toggleActions: "play none none reverse",
           },
           onComplete: () => gsap.to(seamRef.current, { opacity: 0, duration: 0.8, delay: 0.4 }),
