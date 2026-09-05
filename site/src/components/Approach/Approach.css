@@ -3,19 +3,6 @@
   position: relative;
 }
 
-.approach--pinned {
-  height: 300vh;
-}
-
-.approach__pin {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
 .approach__seam {
   position: absolute;
   left: 0;
@@ -40,71 +27,19 @@
   width: 100%;
 }
 
-.approach__stack {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(6px, 1.2vw, 14px);
-  margin-bottom: 44px;
-}
-
-.approach__step {
-  display: flex;
-  align-items: baseline;
-  gap: 22px;
-  opacity: 0.22;
-  transition: opacity 0.5s var(--ease-power3);
-}
-
 .approach__number {
   color: var(--gold);
-  width: 28px;
-}
-
-.approach__word {
-  color: var(--warm-white);
-  transition: color 0.5s var(--ease-power3);
-}
-
-.approach__step--active {
-  opacity: 1;
-}
-
-.approach__step--active .approach__word {
-  color: var(--soft-gold);
-}
-
-.approach__texts {
-  position: relative;
-  height: 130px;
-  max-width: 620px;
-}
-
-.approach__text {
-  position: absolute;
-  inset: 0;
-  color: var(--warm-white);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s var(--ease-power3), transform 0.45s var(--ease-power3);
-  pointer-events: none;
-}
-
-.approach__text--active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 .approach__static {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: clamp(40px, 6vw, 64px);
 }
 
 .approach__static-step .approach__word {
   margin: 10px 0 14px;
   color: var(--soft-gold);
-  opacity: 1;
 }
 
 .approach__static-step p {
