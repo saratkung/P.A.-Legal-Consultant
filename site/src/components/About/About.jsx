@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import { Monogram } from "../shared/Logo.jsx";
-import { revealUp, drawLine, sectionRise, prefersReducedMotion } from "../../lib/animations.js";
+import { revealUp, drawLine, prefersReducedMotion } from "../../lib/animations.js";
 import "./About.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,30 +14,41 @@ export default function About() {
   const seamRef = useRef(null);
 
   useEffect(() => {
-    sectionRise(rootRef.current, { start: "top bottom" });
     revealUp(rootRef.current, ".about__reveal", { stagger: 0.14 });
     drawLine(rootRef.current, lineRef.current, { to: 80 });
 
-    // a thread of gold sweeps the seam as the page below lifts into view
-    if (!prefersReducedMotion() && seamRef.current) {
-      gsap.fromTo(
+    if (prefersReducedMotion()) {
+      gsap.set(rootRef.current, { clipPath: "inset(0% 0% 0% 0%)", y: 0 });
+      return;
+    }
+
+    // the whole lift is locked 1:1 to scroll position across the exact
+    // distance it takes About to slide from off-screen into place — so it
+    // reads as one continuous, connected motion with Hero, at any scroll speed.
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: "top bottom",
+          end: "top top",
+          scrub: 0.35,
+        },
+      });
+
+      tl.fromTo(
+        rootRef.current,
+        { clipPath: "inset(14% 0% 0% 0%)", y: 70 },
+        { clipPath: "inset(0% 0% 0% 0%)", y: 0, ease: "none", duration: 1 },
+        0
+      ).fromTo(
         seamRef.current,
         { scaleX: 0, opacity: 0 },
-        {
-          scaleX: 1,
-          opacity: 1,
-          duration: 1.6,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top bottom",
-            toggleActions: "play none none reverse",
-          },
-          onComplete: () => gsap.to(seamRef.current, { opacity: 0, duration: 0.8, delay: 0.4 }),
-          onReverseComplete: () => gsap.set(seamRef.current, { opacity: 0 }),
-        }
-      );
-    }
+        { scaleX: 1, opacity: 1, ease: "none", duration: 0.5 },
+        0
+      ).to(seamRef.current, { opacity: 0, ease: "none", duration: 0.3 }, 0.6);
+    }, rootRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
