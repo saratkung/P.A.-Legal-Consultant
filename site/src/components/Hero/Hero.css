@@ -71,17 +71,6 @@
   max-width: 780px;
 }
 
-.hero__mono {
-  margin-bottom: 22px;
-}
-
-.hero__gold-line {
-  width: 1px;
-  height: 0;
-  background: var(--gold);
-  margin-bottom: 22px;
-}
-
 .hero__label {
   margin-bottom: 20px;
 }

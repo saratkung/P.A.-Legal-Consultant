@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Monogram } from "../shared/Logo.jsx";
 import { prefersReducedMotion } from "../../lib/animations.js";
 import skylineImg from "../../assets/images/bangkok-skyline.jpg";
 import TwinkleLights from "./TwinkleLights.jsx";
@@ -15,8 +14,6 @@ export default function Hero() {
   const bgImgRef = useRef(null);
   const flareRef = useRef(null);
   const overlayRef = useRef(null);
-  const lineRef = useRef(null);
-  const monoRef = useRef(null);
   const labelRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
@@ -30,8 +27,6 @@ export default function Hero() {
       if (prefersReducedMotion()) {
         gsap.set(
           [
-            monoRef.current,
-            lineRef.current,
             bgRef.current,
             bgImgRef.current,
             labelRef.current,
@@ -51,9 +46,7 @@ export default function Hero() {
       const tl = gsap.timeline({ delay: 0.2 });
 
       tl.set(rootRef.current, { backgroundColor: "var(--midnight-navy)" })
-        .fromTo(monoRef.current, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-        .fromTo(lineRef.current, { height: 0 }, { height: 42, duration: 0.9, ease: "expo.out" }, "-=0.5")
-        .fromTo(bgRef.current, { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: 2, ease: "power3.out" }, "-=0.4")
+        .fromTo(bgRef.current, { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: 2, ease: "power3.out" })
         .fromTo(
           flareRef.current,
           { xPercent: -65, opacity: 0 },
@@ -130,11 +123,6 @@ export default function Hero() {
       <TwinkleLights />
 
       <div className="container hero__content">
-        <div className="hero__mono" ref={monoRef}>
-          <Monogram size={48} />
-        </div>
-        <div className="hero__gold-line" ref={lineRef} />
-
         <p className="hero__label label" ref={labelRef}>
           P.A. Legal Consultant Co., Ltd.
         </p>
