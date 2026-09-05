@@ -19,12 +19,12 @@ export default function About() {
     <section id="about" data-nav-section="about" ref={rootRef} className="about section">
       <div className="container about__grid">
         <div className="about__copy">
-          <SectionLabel number="01">About Us</SectionLabel>
+          <SectionLabel number="01" light>About Us</SectionLabel>
 
-          <h2 className="display-l about__reveal">
+          <h2 className="display-l about__reveal about__headline">
             Legal clarity.
             <br />
-            Commercial judgment.
+            Commercial <span className="about__headline-accent">judgment.</span>
           </h2>
 
           <div className="gold-line about__line" ref={lineRef} />
@@ -36,11 +36,15 @@ export default function About() {
             the region.
           </p>
 
+          <hr className="gold-rule about__divider" />
+
           <p className="body-text about__reveal">
             We combine rigorous legal analysis with commercial judgment,
             helping clients make confident decisions rather than simply
             pointing out the risks.
           </p>
+
+          <hr className="gold-rule about__divider" />
 
           <p className="body-text about__reveal about__statement">
             Our name reflects how we work: every engagement begins with
@@ -61,6 +65,7 @@ export default function About() {
             <div className="about__image-tint" />
             <span className="about__image-mark">PA</span>
           </div>
+          <span className="about__image-tab" aria-hidden="true" />
         </div>
       </div>
     </section>

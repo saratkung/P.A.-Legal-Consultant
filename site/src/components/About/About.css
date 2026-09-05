@@ -1,6 +1,6 @@
 .about {
-  background: var(--ivory);
-  color: var(--charcoal);
+  background: var(--deep-navy);
+  color: var(--warm-white);
 }
 
 .about__grid {
@@ -10,8 +10,14 @@
   align-items: center;
 }
 
-.about h2 {
-  color: var(--dark-blue);
+.about__headline {
+  text-transform: uppercase;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+}
+
+.about__headline-accent {
+  color: var(--gold);
 }
 
 .about__line {
@@ -19,14 +25,20 @@
 }
 
 .about p {
-  color: var(--charcoal);
+  color: var(--warm-white);
   opacity: 0.82;
-  margin-bottom: 20px;
+  margin: 20px 0;
   max-width: 480px;
 }
 
+.about__divider {
+  max-width: 480px;
+  margin: 0;
+  border-top-color: rgba(var(--gold-rgb), 0.3);
+}
+
 .about__statement {
-  color: var(--dark-blue);
+  color: var(--soft-gold);
   opacity: 1;
   font-style: italic;
 }
@@ -44,6 +56,16 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.about__image-tab {
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 90px;
+  background: linear-gradient(180deg, var(--soft-gold), var(--gold));
 }
 
 .about__image-photo {
@@ -85,5 +107,8 @@
   }
   .about__image {
     aspect-ratio: 16 / 10;
+  }
+  .about__image-tab {
+    display: none;
   }
 }
