@@ -1,10 +1,11 @@
-import paMonogram from "../../assets/images/pa-monogram-light.png";
+import paMonogramLight from "../../assets/images/pa-monogram-light.png";
+import paMonogramDark from "../../assets/images/pa-monogram-dark.png";
 import "./Logo.css";
 
-export function Monogram({ size = 40 }) {
+export function Monogram({ size = 40, variant = "light" }) {
   return (
     <img
-      src={paMonogram}
+      src={variant === "dark" ? paMonogramDark : paMonogramLight}
       alt="P.A."
       className="monogram"
       style={{ height: size }}

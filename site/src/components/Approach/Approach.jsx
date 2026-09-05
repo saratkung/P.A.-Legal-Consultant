@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionLabel from "../shared/SectionLabel.jsx";
+import { Monogram } from "../shared/Logo.jsx";
 import { revealUp, prefersReducedMotion } from "../../lib/animations.js";
 import "./Approach.css";
 
@@ -72,16 +73,21 @@ export default function Approach() {
     >
       <div className="approach__seam" ref={seamRef} aria-hidden="true" />
 
+      <div className="approach__side">
+        <div className="approach__side-logo">
+          <Monogram size={64} />
+        </div>
+      </div>
+
       <div className="container approach__inner">
-        <SectionLabel number="02" light>
-          Our Approach
-        </SectionLabel>
+        <SectionLabel number="02">Our Approach</SectionLabel>
 
         <div className="approach__static">
           {STEPS.map((s) => (
             <div key={s.word} className="approach__static-step">
               <span className="approach__number eyebrow-number">{s.n}</span>
               <h3 className="display-l approach__word">{s.word}</h3>
+              <span className="approach__rule" aria-hidden="true" />
               <p className="body-text">{s.text}</p>
             </div>
           ))}

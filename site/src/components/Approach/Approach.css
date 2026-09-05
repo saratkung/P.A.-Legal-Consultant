@@ -1,6 +1,7 @@
 .approach {
-  background: var(--deep-navy);
   position: relative;
+  color: var(--charcoal);
+  background: url("../../assets/images/approach-bg.jpg") center/cover no-repeat;
 }
 
 .approach__seam {
@@ -19,12 +20,57 @@
   );
   box-shadow: 0 0 18px 2px rgba(var(--gold-rgb), 0.7);
   transform-origin: center;
+  transform: scaleX(0);
+  opacity: 0;
   z-index: 2;
   pointer-events: none;
 }
 
+/* --- left brand sidebar: a solid navy panel, since the artwork itself
+   is light here (unlike About's background, which is already dark on
+   the left) --- */
+.approach__side {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: clamp(170px, 15vw, 230px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(48px, 7vh, 84px) 20px;
+  background: linear-gradient(185deg, var(--midnight-navy) 0%, var(--deep-navy) 100%);
+  z-index: 1;
+}
+
+.approach__side::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: rgba(var(--gold-rgb), 0.4);
+}
+
+.approach__side::before {
+  content: "";
+  position: absolute;
+  right: 21px;
+  top: 40%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
 .approach__inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
+  padding-left: clamp(210px, 17vw, 260px);
+  padding-right: clamp(40px, 14vw, 260px);
 }
 
 .approach__number {
@@ -39,10 +85,41 @@
 
 .approach__static-step .approach__word {
   margin: 10px 0 14px;
-  color: var(--soft-gold);
+  color: var(--dark-blue);
+}
+
+.approach__rule {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.approach__rule::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .approach__static-step p {
-  color: var(--warm-white);
-  max-width: 620px;
+  color: var(--charcoal);
+  opacity: 0.82;
+  max-width: 560px;
+}
+
+@media (max-width: 900px) {
+  .approach__side {
+    display: none;
+  }
+  .approach__inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
