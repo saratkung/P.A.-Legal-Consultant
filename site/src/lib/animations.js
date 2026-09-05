@@ -87,12 +87,12 @@ export function sectionRise(el, opts = {}) {
 
   gsap.fromTo(
     el,
-    { clipPath: "inset(9% 0% 0% 0%)", y: 46 },
+    { clipPath: "inset(11% 0% 0% 0%)", y: 56 },
     {
       clipPath: "inset(0% 0% 0% 0%)",
       y: 0,
-      duration: opts.duration ?? 1.4,
-      ease: EASE,
+      duration: opts.duration ?? 1.7,
+      ease: opts.ease ?? EASE_EXPO,
       scrollTrigger: {
         trigger: el,
         start: opts.start ?? "top 92%",
