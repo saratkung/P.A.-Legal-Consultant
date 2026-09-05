@@ -61,25 +61,6 @@
   margin-bottom: clamp(28px, 5vh, 56px);
 }
 
-.about__side-words {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--warm-white);
-}
-
-.about__side-rule {
-  width: 18px;
-  height: 1px;
-  background: rgba(var(--gold-rgb), 0.5);
-}
-
 /* --- copy column --- */
 .about__headline-block {
   position: relative;

@@ -59,13 +59,6 @@ export default function About() {
         <div className="about__side-logo">
           <Monogram size={64} />
         </div>
-        <div className="about__side-words">
-          <span>Counsel</span>
-          <span className="about__side-rule" />
-          <span>Strategy</span>
-          <span className="about__side-rule" />
-          <span>Solutions</span>
-        </div>
       </div>
 
       <div className="container about__grid">
