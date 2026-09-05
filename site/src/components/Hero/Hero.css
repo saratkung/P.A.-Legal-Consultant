@@ -20,6 +20,29 @@
   object-fit: cover;
   object-position: 62% 62%;
   filter: saturate(0.92) brightness(0.94);
+  will-change: transform, filter;
+  transform-origin: 55% 60%;
+}
+
+.hero__flare {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  background: linear-gradient(
+    100deg,
+    transparent 46%,
+    rgba(255, 244, 222, 0.22) 49%,
+    rgba(216, 184, 120, 0.4) 50%,
+    rgba(255, 244, 222, 0.22) 51%,
+    transparent 54%
+  );
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .hero__overlay {

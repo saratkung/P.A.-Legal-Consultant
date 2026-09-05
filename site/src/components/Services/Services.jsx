@@ -24,7 +24,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" data-nav-section="services" ref={rootRef} className="services section">
+    <section id="services" data-nav-section="services" ref={rootRef} className="services section section--full">
       <div className="container">
         <SectionLabel number="03">Our Services / Expertise</SectionLabel>
 

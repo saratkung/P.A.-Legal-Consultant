@@ -48,7 +48,7 @@ export default function ClientReasons() {
   }, []);
 
   return (
-    <section id="why-us" ref={sectionRef} className="reasons section">
+    <section id="why-us" ref={sectionRef} className="reasons section section--full">
       <div className="container">
         <SectionLabel number="04" light>
           Why Clients Work With Us

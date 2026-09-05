@@ -15,7 +15,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" data-nav-section="about" ref={rootRef} className="about section">
+    <section id="about" data-nav-section="about" ref={rootRef} className="about section section--full">
       <div className="about__side">
         <div className="about__side-logo">
           <Monogram size={64} />

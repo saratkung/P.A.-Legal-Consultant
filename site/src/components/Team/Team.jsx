@@ -17,7 +17,7 @@ export default function Team() {
   }, []);
 
   return (
-    <section id="team" data-nav-section="team" ref={rootRef} className="team section">
+    <section id="team" data-nav-section="team" ref={rootRef} className="team section section--full">
       <div className="container">
         <SectionLabel number="05">Our Partners / Team</SectionLabel>
 

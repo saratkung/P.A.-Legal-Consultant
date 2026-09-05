@@ -13,7 +13,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section id="contact" data-nav-section="contact" ref={rootRef} className="contact section">
+    <section id="contact" data-nav-section="contact" ref={rootRef} className="contact section section--full">
       <div className="container contact__grid">
         <div>
           <SectionLabel number="06">Contact</SectionLabel>

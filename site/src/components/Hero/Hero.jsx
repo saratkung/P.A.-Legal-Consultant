@@ -11,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const rootRef = useRef(null);
   const bgRef = useRef(null);
+  const bgImgRef = useRef(null);
+  const flareRef = useRef(null);
   const overlayRef = useRef(null);
   const lineRef = useRef(null);
   const monoRef = useRef(null);
@@ -30,6 +32,7 @@ export default function Hero() {
             monoRef.current,
             lineRef.current,
             bgRef.current,
+            bgImgRef.current,
             labelRef.current,
             line1Ref.current,
             line2Ref.current,
@@ -38,8 +41,9 @@ export default function Hero() {
             ctaRef.current,
             scrollHintRef.current,
           ],
-          { opacity: 1, clearProps: "transform,width,height" }
+          { opacity: 1, clearProps: "transform,width,height,filter" }
         );
+        gsap.set(flareRef.current, { opacity: 0 });
         return;
       }
 
@@ -48,7 +52,14 @@ export default function Hero() {
       tl.set(rootRef.current, { backgroundColor: "var(--midnight-navy)" })
         .fromTo(monoRef.current, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
         .fromTo(lineRef.current, { height: 0 }, { height: 42, duration: 0.9, ease: "expo.out" }, "-=0.5")
-        .fromTo(bgRef.current, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power3.out" }, "-=0.4")
+        .fromTo(bgRef.current, { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: 2, ease: "power3.out" }, "-=0.4")
+        .fromTo(
+          flareRef.current,
+          { xPercent: -65, opacity: 0 },
+          { xPercent: 65, opacity: 1, duration: 1.9, ease: "power2.inOut" },
+          "-=1.9"
+        )
+        .to(flareRef.current, { opacity: 0, duration: 0.5 }, "-=0.4")
         .fromTo(labelRef.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, "-=1.1")
         .fromTo(line1Ref.current, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.55")
         .fromTo(line2Ref.current, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.7")
@@ -57,9 +68,18 @@ export default function Hero() {
         .fromTo(ctaRef.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
         .fromTo(scrollHintRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.3");
 
-      gsap.to(bgRef.current, {
-        scale: 1.08,
-        ease: "none",
+      // slow ambient "living photograph" zoom on the image itself, independent
+      // of the scroll-driven scale on its wrapper — the two combine for depth.
+      gsap.to(bgImgRef.current, {
+        scale: 1.07,
+        duration: 26,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 1.5,
+      });
+
+      const heroScroll = gsap.timeline({
         scrollTrigger: {
           trigger: rootRef.current,
           start: "top top",
@@ -68,16 +88,11 @@ export default function Hero() {
         },
       });
 
-      gsap.to(overlayRef.current, {
-        opacity: 0.94,
-        ease: "none",
-        scrollTrigger: {
-          trigger: rootRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      heroScroll
+        .to(bgRef.current, { scale: 1.22, ease: "none" }, 0)
+        .to(bgImgRef.current, { filter: "blur(5px) saturate(0.85) brightness(0.85)", ease: "none" }, 0)
+        .to(overlayRef.current, { opacity: 0.96, ease: "none" }, 0)
+        .to(rootRef.current.querySelector(".hero__content"), { yPercent: -12, opacity: 0.2, ease: "none" }, 0);
     }, rootRef);
 
     return () => ctx.revert();
@@ -99,9 +114,11 @@ export default function Hero() {
           src={skylineImg}
           alt="Bangkok skyline at night"
           className="hero__bg-img"
+          ref={bgImgRef}
           loading="eager"
           fetchPriority="high"
         />
+        <div className="hero__flare" ref={flareRef} aria-hidden="true" />
       </div>
       <div className="hero__overlay" ref={overlayRef} />
 
