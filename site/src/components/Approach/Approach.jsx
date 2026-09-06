@@ -2,6 +2,9 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "../../lib/animations.js";
+import counselBg from "../../assets/images/approach-counsel-bg.jpg";
+import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
+import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import "./Approach.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,16 +13,22 @@ const STEPS = [
   {
     n: "01",
     word: "Counsel",
+    theme: "light",
+    bg: counselBg,
     text: "We start by listening. Before advising, we take the time to understand the client's business, objectives, and constraints, then explain the legal landscape in plain, direct terms — no jargon, no hedging.",
   },
   {
     n: "02",
     word: "Strategy",
+    theme: "dark",
+    bg: strategyBg,
     text: "Every matter is different, so we shape an approach around what the client is actually trying to achieve — balancing legal risk, cost, timeline, and commercial priorities rather than offering one-size-fits-all advice.",
   },
   {
     n: "03",
     word: "Solution",
+    theme: "light",
+    bg: solutionBg,
     text: "We close the loop with action: drafted documents, negotiated terms, resolved disputes, or a clear path forward. Advice is only useful when it leads somewhere, and we hold ourselves to that standard.",
   },
 ];
@@ -40,9 +49,11 @@ export default function Approach() {
   const lineRefs = useRef([]);
   const descRefs = useRef([]);
   const indicatorRefs = useRef([]);
+  const bgRefs = useRef([]);
 
   const activeIndexRef = useRef(0);
   const [reduced] = useState(computeReduced);
+  const [theme, setTheme] = useState(STEPS[0].theme);
 
   useLayoutEffect(() => {
     if (reduced) {
@@ -51,6 +62,7 @@ export default function Approach() {
       gsap.set(wordRefs.current[0], { opacity: 1, y: 0 });
       gsap.set(lineRefs.current[0], { width: 90 });
       gsap.set(descRefs.current[0], { opacity: 1, y: 0 });
+      gsap.set(bgRefs.current[0], { opacity: 1 });
       return;
     }
 
@@ -81,6 +93,7 @@ export default function Approach() {
         gsap.set(wordRefs.current[i], { opacity: active ? 1 : 0, y: active ? 0 : 70 });
         gsap.set(lineRefs.current[i], { width: active ? 90 : 0 });
         gsap.set(descRefs.current[i], { opacity: active ? 1 : 0, y: active ? 0 : 30 });
+        gsap.set(bgRefs.current[i], { opacity: active ? 1 : 0 });
         indicatorRefs.current[i]?.classList.toggle("approach2__indicator-num--active", active);
       });
 
@@ -89,9 +102,15 @@ export default function Approach() {
         if (idx === prev) return;
         activeIndexRef.current = idx;
 
+        setTheme(STEPS[idx].theme);
+
         indicatorRefs.current.forEach((el, i) =>
           el?.classList.toggle("approach2__indicator-num--active", i === idx)
         );
+
+        // background photograph crossfade — the light/dark rhythm across stages
+        gsap.to(bgRefs.current[prev], { opacity: 0, duration: 1.1, ease: "power2.out" });
+        gsap.to(bgRefs.current[idx], { opacity: 1, duration: 1.1, ease: "power2.out" });
 
         // outgoing: drifts opposite the incoming direction and fades
         const outY = dir === "down" ? -50 : 50;
@@ -166,13 +185,20 @@ export default function Approach() {
       id="approach"
       data-nav-section="approach"
       ref={trackRef}
-      className={`approach2 ${reduced ? "" : "approach2--pinned"}`}
+      className={`approach2 approach2--${theme} ${reduced ? "" : "approach2--pinned"}`}
     >
       <div className="approach2__seam" ref={seamRef} aria-hidden="true" />
       <div className="approach2__exit-seam" ref={exitSeamRef} aria-hidden="true" />
 
       <div ref={pinRef} className="approach2__pin">
-        <div className="approach2__glow" aria-hidden="true" />
+        <div className="approach2__bg" aria-hidden="true">
+          {STEPS.map((s, i) => (
+            <div className="approach2__bg-layer" key={s.n} ref={(el) => (bgRefs.current[i] = el)}>
+              <img src={s.bg} alt="" loading="eager" />
+              <div className="approach2__bg-overlay" />
+            </div>
+          ))}
+        </div>
         <div className="approach2__grid" aria-hidden="true" />
 
         <div className="container approach2__layout">
