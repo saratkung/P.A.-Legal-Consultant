@@ -3,6 +3,11 @@
   color: var(--charcoal);
 }
 
+.team__headline {
+  color: var(--dark-blue);
+  margin: 18px 0 32px;
+}
+
 .team__intro {
   max-width: 640px;
   color: var(--charcoal);

@@ -2,6 +2,11 @@
   background: var(--midnight-navy);
 }
 
+.reasons__headline {
+  color: var(--ivory);
+  margin: 18px 0 8px;
+}
+
 .reasons__list {
   display: flex;
   flex-direction: column;

@@ -53,6 +53,12 @@ export default function ClientReasons() {
         <SectionLabel number="04" light>
           Why Clients Work With Us
         </SectionLabel>
+
+        <h2 className="display-xl reasons__headline">
+          Why Clients
+          <br />
+          Work With Us.
+        </h2>
       </div>
       <div ref={rootRef} className="reasons__list">
         {REASONS.map((r) => (

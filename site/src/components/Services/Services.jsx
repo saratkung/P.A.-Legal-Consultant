@@ -28,6 +28,12 @@ export default function Services() {
       <div className="container">
         <SectionLabel number="03">Our Services / Expertise</SectionLabel>
 
+        <h2 className="display-xl services__headline">
+          Our Services
+          <br />
+          &amp; Expertise.
+        </h2>
+
         <p className="body-text services__intro">
           We advise across the areas that matter most to businesses and
           individuals operating in Thailand, bringing the same combination

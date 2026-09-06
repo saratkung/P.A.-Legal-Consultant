@@ -21,6 +21,12 @@ export default function Team() {
       <div className="container">
         <SectionLabel number="05">Our Partners / Team</SectionLabel>
 
+        <h2 className="display-xl team__headline">
+          Our Partners
+          <br />
+          &amp; Team.
+        </h2>
+
         <p className="body-text team__intro">
           P.A. Legal Consultant is led by a small team of practitioners who
           stay directly involved in every matter — clients work with the
