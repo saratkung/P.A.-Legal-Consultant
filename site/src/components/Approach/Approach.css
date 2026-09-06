@@ -1,13 +1,17 @@
-.approach {
+.approach2 {
   position: relative;
-  color: var(--charcoal);
-  background: url("../../assets/images/approach-bg.jpg") center/cover no-repeat;
+  background: var(--midnight-navy);
+  overflow: hidden;
 }
 
-.approach__seam {
+.approach2--pinned {
+  height: 360vh;
+}
+
+.approach2__seam,
+.approach2__exit-seam {
   position: absolute;
   left: 0;
-  top: 0;
   width: 100%;
   height: 3px;
   background: linear-gradient(
@@ -20,106 +24,229 @@
   );
   box-shadow: 0 0 18px 2px rgba(var(--gold-rgb), 0.7);
   transform-origin: center;
-  transform: scaleX(0);
-  opacity: 0;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 }
 
-/* --- left brand sidebar: a solid navy panel, since the artwork itself
-   is light here (unlike About's background, which is already dark on
-   the left) --- */
-.approach__side {
+.approach2__seam {
+  top: 0;
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.approach2__exit-seam {
+  bottom: 0;
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.approach2__pin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.approach2__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 55% at 30% 42%, rgba(255, 255, 255, 0.035), transparent 65%);
+  pointer-events: none;
+}
+
+.approach2__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(245, 243, 238, 0.045) 0px,
+      rgba(245, 243, 238, 0.045) 1px,
+      transparent 1px,
+      transparent 64px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(245, 243, 238, 0.045) 0px,
+      rgba(245, 243, 238, 0.045) 1px,
+      transparent 1px,
+      transparent 64px
+    );
+}
+
+.approach2__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(150px, 23%) 1fr minmax(0, 18%);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  width: 100%;
+}
+
+/* --- left: section marker + vertical progress indicator --- */
+.approach2__left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 11vh, 130px);
+}
+
+.approach2__marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.approach2__marker-num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+.approach2__marker-line {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.approach2__marker-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--warm-white);
+  opacity: 0.8;
+}
+
+.approach2__indicator {
+  position: relative;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 18px;
+}
+
+.approach2__indicator-line {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: clamp(170px, 15vw, 230px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(48px, 7vh, 84px) 20px;
-  background: linear-gradient(185deg, var(--midnight-navy) 0%, var(--deep-navy) 100%);
-  z-index: 1;
-}
-
-.approach__side::after {
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 8%;
-  bottom: 8%;
   width: 1px;
-  background: rgba(var(--gold-rgb), 0.4);
+  background: rgba(245, 243, 238, 0.15);
 }
 
-.approach__side::before {
-  content: "";
+.approach2__indicator-dot {
   position: absolute;
-  right: 21px;
-  top: 40%;
-  width: 6px;
-  height: 6px;
+  left: -3px;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
   background: var(--gold);
-  transform: rotate(45deg);
-  z-index: 2;
+  box-shadow: 0 0 8px 1px rgba(var(--gold-rgb), 0.6);
+  transform: translateY(-50%);
 }
 
-.approach__inner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  padding-left: clamp(210px, 17vw, 260px);
-  padding-right: clamp(40px, 14vw, 260px);
+.approach2__indicator-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--ivory);
+  opacity: 0.25;
+  transition: opacity 0.5s var(--ease-power3), color 0.5s var(--ease-power3);
 }
 
-.approach__number {
+.approach2__indicator-num--active {
+  opacity: 1;
   color: var(--gold);
 }
 
-.approach__static {
+/* --- main: the stacked, cross-fading principle --- */
+.approach2__main {
+  position: relative;
+  height: clamp(420px, 54vh, 580px);
+}
+
+.approach2__block {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 6vw, 64px);
+  justify-content: center;
 }
 
-.approach__static-step .approach__word {
-  margin: 10px 0 14px;
-  color: var(--dark-blue);
+.approach2__num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 10px;
 }
 
-.approach__rule {
+.approach2__word {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(72px, 9vw, 150px);
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+  color: var(--ivory);
+  margin: 0 0 24px;
+}
+
+.approach2__line {
   display: block;
-  width: 80px;
+  width: 0;
   height: 1px;
   background: var(--gold);
-  margin-bottom: 22px;
-  position: relative;
+  margin-bottom: 28px;
 }
 
-.approach__rule::after {
-  content: "";
-  position: absolute;
-  right: -5px;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  transform: translateY(-50%) rotate(45deg);
+.approach2__desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(16px, 1vw, 18px);
+  line-height: 1.8;
+  color: var(--warm-white);
+  max-width: 420px;
 }
 
-.approach__static-step p {
-  color: var(--charcoal);
-  opacity: 0.82;
-  max-width: 560px;
+.approach2__right {
+  height: 100%;
 }
 
-@media (max-width: 900px) {
-  .approach__side {
+@media (max-width: 1080px) {
+  .approach2__layout {
+    grid-template-columns: minmax(120px, 26%) 1fr;
+  }
+  .approach2__right {
     display: none;
   }
-  .approach__inner {
-    padding-left: 0;
-    padding-right: 0;
+}
+
+@media (max-width: 720px) {
+  .approach2__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .approach2__left {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .approach2__indicator {
+    height: 100px;
+  }
+  .approach2__word {
+    font-size: clamp(56px, 16vw, 72px);
+  }
+  .approach2__main {
+    height: clamp(380px, 62vh, 480px);
   }
 }
