@@ -83,8 +83,8 @@ export default function Approach() {
           { clipPath: "inset(0% 0% 0% 0%)", y: 0, ease: "none", duration: 1 },
           0
         )
-        .fromTo(seamRef.current, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, ease: "none", duration: 0.5 }, 0)
-        .to(seamRef.current, { opacity: 0, ease: "none", duration: 0.3 }, 0.6);
+        .fromTo(seamRef.current, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, ease: "none", duration: 0.25 }, 0)
+        .to(seamRef.current, { opacity: 0, ease: "none", duration: 0.15 }, 0.85);
 
       // --- initial state for the three stacked principle blocks ---
       STEPS.forEach((_, i) => {
