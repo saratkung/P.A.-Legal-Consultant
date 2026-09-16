@@ -30,8 +30,3 @@
   color: var(--warm-white);
   max-width: 560px;
 }
-
-.commitment__lead {
-  color: var(--soft-gold);
-  font-style: italic;
-}

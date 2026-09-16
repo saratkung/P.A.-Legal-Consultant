@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "../../lib/animations.js";
@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const rootRef = useRef(null);
+  const pinRef = useRef(null);
   const bgRef = useRef(null);
   const bgImgRef = useRef(null);
   const flareRef = useRef(null);
@@ -22,7 +23,7 @@ export default function Hero() {
   const ctaRef = useRef(null);
   const scrollHintRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       if (prefersReducedMotion()) {
         gsap.set(
@@ -81,7 +82,7 @@ export default function Hero() {
           start: "top top",
           end: "+=55%",
           scrub: true,
-          pin: true,
+          pin: pinRef.current,
           pinSpacing: true,
           anticipatePin: 1,
         },
@@ -108,51 +109,53 @@ export default function Hero() {
       ref={rootRef}
       className="hero section section--full"
     >
-      <div className="hero__bg" ref={bgRef}>
-        <img
-          src={skylineImg}
-          alt="Bangkok skyline at night"
-          className="hero__bg-img"
-          ref={bgImgRef}
-          loading="eager"
-          fetchPriority="high"
-        />
-        <div className="hero__flare" ref={flareRef} aria-hidden="true" />
-      </div>
-      <div className="hero__overlay" ref={overlayRef} />
-      <TwinkleLights />
-
-      <div className="container hero__content">
-        <p className="hero__label label" ref={labelRef}>
-          P.A. Legal Consultant Co., Ltd.
-        </p>
-
-        <h1 className="hero__headline display-xl">
-          <span className="hero__line" ref={line1Ref}>Counsel.</span>
-          <span className="hero__line" ref={line2Ref}>Strategy.</span>
-          <span className="hero__line" ref={line3Ref}>Solution.</span>
-        </h1>
-
-        <p className="hero__body body-text" ref={bodyRef}>
-          We provide clear counsel, strategic direction and practical solutions
-          to individuals, entrepreneurs, and businesses operating in Thailand
-          and across the region.
-        </p>
-
-        <div className="hero__cta" ref={ctaRef}>
-          <button
-            className="hero__cta-btn"
-            onClick={() => scrollToId("approach")}
-            data-cursor="button"
-          >
-            Discover Our Approach <span>→</span>
-          </button>
+      <div className="hero__pin" ref={pinRef}>
+        <div className="hero__bg" ref={bgRef}>
+          <img
+            src={skylineImg}
+            alt="Bangkok skyline at night"
+            className="hero__bg-img"
+            ref={bgImgRef}
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="hero__flare" ref={flareRef} aria-hidden="true" />
         </div>
-      </div>
+        <div className="hero__overlay" ref={overlayRef} />
+        <TwinkleLights />
 
-      <div className="hero__scroll-hint" ref={scrollHintRef}>
-        <span>Scroll to Explore</span>
-        <span className="hero__scroll-arrow">↓</span>
+        <div className="container hero__content">
+          <p className="hero__label label" ref={labelRef}>
+            P.A. Legal Consultant Co., Ltd.
+          </p>
+
+          <h1 className="hero__headline display-xl">
+            <span className="hero__line" ref={line1Ref}>Counsel.</span>
+            <span className="hero__line" ref={line2Ref}>Strategy.</span>
+            <span className="hero__line" ref={line3Ref}>Solution.</span>
+          </h1>
+
+          <p className="hero__body body-text" ref={bodyRef}>
+            We provide clear counsel, strategic direction and practical solutions
+            to individuals, entrepreneurs, and businesses operating in Thailand
+            and across the region.
+          </p>
+
+          <div className="hero__cta" ref={ctaRef}>
+            <button
+              className="hero__cta-btn"
+              onClick={() => scrollToId("approach")}
+              data-cursor="button"
+            >
+              Discover Our Approach <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="hero__scroll-hint" ref={scrollHintRef}>
+          <span>Scroll to Explore</span>
+          <span className="hero__scroll-arrow">↓</span>
+        </div>
       </div>
     </section>
   );

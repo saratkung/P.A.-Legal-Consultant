@@ -1,7 +1,17 @@
 .hero {
   background: var(--midnight-navy);
+}
+
+.hero__pin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: flex-end;
   padding-bottom: clamp(90px, 12vh, 140px);
+  overflow: hidden;
 }
 
 .hero__bg {
@@ -136,7 +146,7 @@
 }
 
 @media (max-width: 720px) {
-  .hero {
+  .hero__pin {
     padding-bottom: 90px;
   }
   .hero__scroll-hint {

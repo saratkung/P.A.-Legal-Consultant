@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../shared/Logo.jsx";
 import GoldButton from "../shared/GoldButton.jsx";
 import "./Navbar.css";
 
 const LINKS = [
-  { id: "home", label: "Home" },
-  { id: "services", label: "Services" },
-  { id: "team", label: "Team" },
-  { id: "contact", label: "Contact" },
+  { id: "home", label: "Home", path: "/" },
+  { id: "services", label: "Services", path: "/services" },
+  { id: "team", label: "Team", path: "/team" },
+  { id: "contact", label: "Contact", path: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -24,59 +25,34 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = Array.from(
-      document.querySelectorAll("[data-nav-section]")
-    );
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.getAttribute("data-nav-section"));
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
-  const goTo = (id) => {
-    setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const active = LINKS.find((l) => l.path === location.pathname)?.id ?? "home";
 
   return (
     <header ref={navRef} className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner container">
-        <button className="navbar__brand" onClick={() => goTo("home")} aria-label="P.A. Legal Consultant — home">
+        <Link className="navbar__brand" to="/" aria-label="P.A. Legal Consultant — home" onClick={() => setMenuOpen(false)}>
           <Logo compact />
-        </button>
+        </Link>
 
         <nav className="navbar__links" aria-label="Primary">
           {LINKS.map((l) => (
-            <button
+            <Link
               key={l.id}
+              to={l.path}
               className={`navbar__link ${active === l.id ? "navbar__link--active" : ""}`}
-              onClick={() => goTo(l.id)}
+              onClick={() => setMenuOpen(false)}
               data-cursor="button"
             >
               {l.label}
-            </button>
+            </Link>
           ))}
         </nav>
 
         <div className="navbar__cta">
-          <GoldButton onClick={() => goTo("contact")}>
-            Request a Consultation →
-          </GoldButton>
+          <GoldButton to="/contact">Request a Consultation →</GoldButton>
         </div>
 
         <button
@@ -93,12 +69,12 @@ export default function Navbar() {
       <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`}>
         <nav className="mobile-menu__links">
           {LINKS.map((l) => (
-            <button key={l.id} onClick={() => goTo(l.id)}>
+            <Link key={l.id} to={l.path} onClick={() => setMenuOpen(false)}>
               {l.label}
-            </button>
+            </Link>
           ))}
         </nav>
-        <GoldButton onClick={() => goTo("contact")} className="mobile-menu__cta">
+        <GoldButton to="/contact" className="mobile-menu__cta" onClick={() => setMenuOpen(false)}>
           Request a Consultation →
         </GoldButton>
       </div>

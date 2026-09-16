@@ -147,7 +147,7 @@
   gap: 26px;
 }
 
-.mobile-menu__links button {
+.mobile-menu__links a {
   font-family: var(--font-display);
   font-size: 34px;
   color: var(--ivory);
