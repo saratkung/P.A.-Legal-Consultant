@@ -56,8 +56,7 @@ export default function MagneticCursor() {
       aria-hidden="true"
     >
       {hint === "button" && <span className="cursor-dot__glyph">→</span>}
-      {hint === "service" && <span className="cursor-dot__glyph">VIEW</span>}
-      {hint === "image" && <span className="cursor-dot__glyph">EXPLORE</span>}
+      {hint === "service" && <span className="cursor-dot__glyph">EXPLORE →</span>}
     </div>
   );
 }

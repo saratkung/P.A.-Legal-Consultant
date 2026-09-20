@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { revealUp, drawLine, sectionRise } from "../../lib/animations.js";
-import CitySilhouette from "../shared/CitySilhouette.jsx";
+import commitmentBg from "../../assets/images/commitment-bg.png";
 import "./Commitment.css";
 
 export default function Commitment() {
@@ -15,7 +15,10 @@ export default function Commitment() {
 
   return (
     <section id="commitment" ref={rootRef} className="commitment section section--full">
-      <CitySilhouette variant="line" className="commitment__skyline" />
+      <div className="commitment__bg" aria-hidden="true">
+        <img src={commitmentBg} alt="" loading="lazy" />
+        <div className="commitment__bg-overlay" />
+      </div>
       <div className="container commitment__inner">
         <h2 className="display-xl commitment__reveal">
           Outcomes,
