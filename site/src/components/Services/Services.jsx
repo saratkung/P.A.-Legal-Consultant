@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import { revealUp, sectionRise, prefersReducedMotion } from "../../lib/animations.js";
-import bangkokSkyline from "../../assets/images/bangkok-skyline.jpg";
+import corporateBg from "../../assets/images/services-corporate-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
 import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
@@ -16,8 +16,8 @@ const SERVICES = [
     title: "Corporate & Commercial Law",
     tag: "Company Formation / Governance / Restructuring",
     desc: "We provide comprehensive legal advice on corporate structure, governance, and commercial transactions, helping businesses grow and operate with confidence in Thailand and the region.",
-    image: bangkokSkyline,
-    position: "center 22%",
+    image: corporateBg,
+    position: "center 40%",
   },
   {
     n: "02",
