@@ -4,6 +4,7 @@ import SectionLabel from "../shared/SectionLabel.jsx";
 import { revealUp, sectionRise, prefersReducedMotion } from "../../lib/animations.js";
 import corporateBg from "../../assets/images/services-corporate-bg.png";
 import contractsBg from "../../assets/images/services-contracts-bg.png";
+import investmentBg from "../../assets/images/services-investment-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
 import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
@@ -33,8 +34,8 @@ const SERVICES = [
     title: "Foreign Investment & BOI",
     tag: "Structuring / Approvals / Compliance",
     desc: "Foreign investment structuring and BOI applications for businesses entering or expanding within Thailand, from first filing through to approval.",
-    image: aboutBg,
-    position: "80% center",
+    image: investmentBg,
+    position: "center 42%",
   },
   {
     n: "04",
