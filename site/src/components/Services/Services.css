@@ -98,6 +98,12 @@
   position: relative;
   padding: 26px 0;
   cursor: pointer;
+  outline: none;
+}
+
+.service-row:focus-visible {
+  outline: 1px solid rgba(var(--gold-rgb), 0.55);
+  outline-offset: 6px;
 }
 
 .service-row__top {
