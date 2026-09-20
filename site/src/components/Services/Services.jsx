@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import SectionLabel from "../shared/SectionLabel.jsx";
 import { revealUp, sectionRise, prefersReducedMotion } from "../../lib/animations.js";
 import corporateBg from "../../assets/images/services-corporate-bg.png";
+import contractsBg from "../../assets/images/services-contracts-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
 import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
@@ -24,8 +25,8 @@ const SERVICES = [
     title: "Contracts",
     tag: "Drafting / Review / Negotiation",
     desc: "Contracts drafted, reviewed, and negotiated to hold up under pressure — built to reflect what the client actually intends, not just what is standard.",
-    image: counselBg,
-    position: "88% 70%",
+    image: contractsBg,
+    position: "center 48%",
   },
   {
     n: "03",
@@ -182,16 +183,6 @@ export default function Services() {
                     <span className="service-row__arrow" aria-hidden="true">
                       →
                     </span>
-                  </div>
-
-                  <div className="service-row__reveal">
-                    <div className="service-row__reveal-inner">
-                      <p className="service-row__desc">{s.desc}</p>
-                      <span className="pill-cta pill-cta--dark">
-                        <span className="pill-cta__icon" aria-hidden="true">→</span>
-                        View Expertise
-                      </span>
-                    </div>
                   </div>
 
                   <span className="service-row__divider" aria-hidden="true" />

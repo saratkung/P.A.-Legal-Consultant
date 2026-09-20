@@ -60,10 +60,6 @@
   flex-shrink: 0;
 }
 
-.pill-cta--dark {
-  color: var(--gold);
-}
-
 .pill-cta--light {
   color: var(--soft-gold);
 }
@@ -100,13 +96,8 @@
 
 .service-row {
   position: relative;
-  padding: 24px 0;
+  padding: 26px 0;
   cursor: pointer;
-  transition: padding 0.6s var(--ease-power3);
-}
-
-.service-row--active {
-  padding: 28px 0 32px;
 }
 
 .service-row__top {
@@ -154,47 +145,6 @@
 .service-row:hover .service-row__arrow {
   opacity: 1;
   transform: translateX(8px);
-}
-
-/* expandable description */
-.service-row__reveal {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.7s var(--ease-power3);
-}
-
-.service-row--active .service-row__reveal {
-  max-height: 160px;
-}
-
-.service-row__reveal-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  padding-top: 16px;
-  padding-left: 68px;
-}
-
-.service-row__desc {
-  margin: 0;
-  max-width: 46ch;
-  color: var(--charcoal);
-  opacity: 0.68;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.service-row__reveal-inner .pill-cta {
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.6s var(--ease-power3) 0.08s, transform 0.6s var(--ease-power3) 0.08s;
-  flex-shrink: 0;
-}
-
-.service-row--active .service-row__reveal-inner .pill-cta {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .service-row__divider {
@@ -353,7 +303,9 @@
 
   .services__visual {
     order: -1;
-    position: static;
+    position: relative; /* keep as containing block for its absolutely
+      positioned image layers -- "static" would let them escape to
+      .services__layout and invisibly block taps on rows below */
     height: 62vh;
     min-height: 420px;
     margin-bottom: 40px;
@@ -370,16 +322,5 @@
 
   .service-row__title {
     font-size: 19px;
-  }
-
-  .service-row__reveal-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 46px;
-    gap: 14px;
-  }
-
-  .service-row--active .service-row__reveal {
-    max-height: 220px;
   }
 }
