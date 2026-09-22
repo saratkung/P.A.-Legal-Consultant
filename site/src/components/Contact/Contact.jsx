@@ -49,15 +49,19 @@ export default function Contact() {
           <dl className="contact__meta-list">
             <div>
               <dt className="meta">Tel</dt>
-              <dd>To be confirmed</dd>
+              <dd>
+                <a href="tel:+66814426299" data-cursor="button">
+                  +66 (0) 81-442-6299
+                </a>
+              </dd>
             </div>
             <div>
               <dt className="meta">Email</dt>
-              <dd>To be confirmed</dd>
+              <dd className="contact__meta-placeholder">To be confirmed</dd>
             </div>
             <div>
               <dt className="meta">Website</dt>
-              <dd>To be confirmed</dd>
+              <dd className="contact__meta-placeholder">To be confirmed</dd>
             </div>
           </dl>
         </div>

@@ -73,6 +73,18 @@
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--charcoal);
+}
+
+.contact__meta-list dd a {
+  color: var(--charcoal);
+  transition: color var(--dur-s) var(--ease-power3);
+}
+
+.contact__meta-list dd a:hover {
+  color: var(--gold);
+}
+
+.contact__meta-placeholder {
   opacity: 0.55;
   font-style: italic;
 }
