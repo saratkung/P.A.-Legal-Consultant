@@ -7,10 +7,10 @@ import contractsBg from "../../assets/images/services-contracts-bg.png";
 import investmentBg from "../../assets/images/services-investment-bg.png";
 import maBg from "../../assets/images/services-ma-bg.png";
 import employmentBg from "../../assets/images/services-employment-bg.png";
+import realEstateBg from "../../assets/images/services-realestate-bg.png";
+import disputeBg from "../../assets/images/services-dispute-bg.png";
+import ipBg from "../../assets/images/services-ip-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
-import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
-import aboutBg from "../../assets/images/about-bg.jpg";
-import commitmentBg from "../../assets/images/commitment-bg.png";
 import "./Services.css";
 
 const SERVICES = [
@@ -59,9 +59,8 @@ const SERVICES = [
     title: "Real Estate & Property",
     tag: "Acquisition / Title / Development",
     desc: "Real estate and property transactions, from acquisition through title and development structuring, handled with the same rigor throughout.",
-    image: aboutBg,
-    position: "18% center",
-    filter: "saturate(0.85) brightness(0.94)",
+    image: realEstateBg,
+    position: "center 55%",
   },
   {
     n: "07",
@@ -77,18 +76,16 @@ const SERVICES = [
     title: "Dispute Resolution",
     tag: "Litigation / Arbitration / Negotiation",
     desc: "Dispute resolution, litigation, and arbitration pursued with a clear view of the outcome that actually serves the client's interests.",
-    image: strategyBg,
-    position: "62% center",
+    image: disputeBg,
+    position: "center 58%",
   },
   {
     n: "09",
     title: "Intellectual Property",
     tag: "Registration / Protection / Enforcement",
     desc: "Intellectual property protection, from registration through enforcement, safeguarding the assets that define a business.",
-    image: commitmentBg,
-    position: "22% 82%",
-    filter: "hue-rotate(6deg) brightness(1.08) contrast(1.05)",
-    scale: 1.4,
+    image: ipBg,
+    position: "center 50%",
   },
 ];
 
