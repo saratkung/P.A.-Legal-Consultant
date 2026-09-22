@@ -20,6 +20,12 @@
 .services__top {
   position: relative;
   z-index: 1;
+  text-align: center;
+}
+
+.services__top .section-label {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services__headline {
@@ -29,6 +35,8 @@
 
 .services__intro {
   max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
   color: var(--charcoal);
   opacity: 0.8;
 }
