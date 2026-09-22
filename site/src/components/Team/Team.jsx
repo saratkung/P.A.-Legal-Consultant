@@ -1,52 +1,65 @@
 import { useEffect, useRef } from "react";
 import SectionLabel from "../shared/SectionLabel.jsx";
-import { revealUp, sectionRise } from "../../lib/animations.js";
+import GoldButton from "../shared/GoldButton.jsx";
+import { revealUp, sectionRise, drawLine } from "../../lib/animations.js";
 import "./Team.css";
 
-const TEAM = [
-  { initials: "PS", name: "Mr Piraphan Salirathavibhaga", title: "Managing Partner" },
-  { initials: "AB", name: "Ms Airada Bumroungruksa", title: "Founding Partner" },
-];
+const EXPERTISE = ["Law", "Energy", "Real Estate", "Corporate Strategy"];
 
 export default function Team() {
   const rootRef = useRef(null);
+  const lineRef = useRef(null);
 
   useEffect(() => {
     sectionRise(rootRef.current);
-    revealUp(rootRef.current, ".team-card", { stagger: 0.15, y: 30 });
+    revealUp(rootRef.current, ".founder__reveal", { stagger: 0.12, y: 28 });
+    drawLine(rootRef.current, lineRef.current, { to: 64 });
   }, []);
 
   return (
     <section id="team" data-nav-section="team" ref={rootRef} className="team section section--full">
       <div className="container">
-        <SectionLabel number="05">Our Partners / Team</SectionLabel>
+        <SectionLabel number="05">Our Founder</SectionLabel>
 
-        <h2 className="display-xl team__headline">
-          Our Partners
-          <br />
-          &amp; Team.
-        </h2>
+        <h2 className="display-xl team__headline">Meet Our Founder.</h2>
 
-        <p className="body-text team__intro">
-          P.A. Legal Consultant is led by a small team of practitioners who
-          stay directly involved in every matter — clients work with the
-          people advising them, not a rotating cast of juniors.
-        </p>
-
-        <div className="team__grid">
-          {TEAM.map((m) => (
-            <div className="team-card" key={m.name}>
-              <div className="team-card__avatar">
-                <span>{m.initials}</span>
-              </div>
-              <h3 className="display-m team-card__name">{m.name}</h3>
-              <span className="label team-card__title">{m.title}</span>
-              <div className="gold-rule team-card__rule" />
-              <p className="body-text team-card__placeholder">
-                Professional profile coming soon.
-              </p>
+        <div className="founder">
+          <div className="founder__portrait founder__reveal">
+            <span className="founder__corner founder__corner--tl" aria-hidden="true" />
+            <span className="founder__corner founder__corner--br" aria-hidden="true" />
+            <div className="founder__portrait-inner">
+              <span className="founder__monogram">A.B.</span>
             </div>
-          ))}
+          </div>
+
+          <div className="founder__content">
+            <h3 className="display-l founder__name founder__reveal">Airada Bumroungruksa</h3>
+            <span className="label founder__title founder__reveal">
+              Founding Partner &middot; Corporate Advisor
+            </span>
+
+            <div className="gold-line founder__line founder__reveal" ref={lineRef} />
+
+            <p className="body-text founder__bio founder__reveal">
+              Airada leads P.A. Legal Consultant with a practical, commercially
+              minded approach — advising clients across corporate, energy, and
+              real estate matters with the same direct, partner-level attention
+              from first consultation through to resolution.
+            </p>
+
+            <div className="founder__expertise founder__reveal">
+              <span className="label founder__expertise-label">Areas of Expertise</span>
+              <ul className="founder__expertise-list">
+                {EXPERTISE.map((e) => (
+                  <li key={e}>{e}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="founder__reveal">
+              <GoldButton to="/contact">Professional Profile &rarr;</GoldButton>
+            </div>
+          </div>
         </div>
       </div>
     </section>
