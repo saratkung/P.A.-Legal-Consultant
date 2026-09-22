@@ -7,7 +7,7 @@ import "./Navbar.css";
 const LINKS = [
   { id: "home", label: "Home", path: "/" },
   { id: "services", label: "Services", path: "/services" },
-  { id: "team", label: "Team", path: "/team" },
+  { id: "team", label: "Our Founder", path: "/team" },
   { id: "contact", label: "Contact", path: "/contact" },
 ];
 
