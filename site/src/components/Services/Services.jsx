@@ -6,8 +6,8 @@ import corporateBg from "../../assets/images/services-corporate-bg.png";
 import contractsBg from "../../assets/images/services-contracts-bg.png";
 import investmentBg from "../../assets/images/services-investment-bg.png";
 import maBg from "../../assets/images/services-ma-bg.png";
+import employmentBg from "../../assets/images/services-employment-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
-import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
 import aboutBg from "../../assets/images/about-bg.jpg";
 import commitmentBg from "../../assets/images/commitment-bg.png";
@@ -51,8 +51,8 @@ const SERVICES = [
     title: "Employment & Labor",
     tag: "Contracts / Policy / Compliance",
     desc: "Employment and labor law for employers building teams in Thailand — contracts, policy, and the obligations that come with them.",
-    image: solutionBg,
-    position: "85% center",
+    image: employmentBg,
+    position: "center 42%",
   },
   {
     n: "06",
