@@ -5,6 +5,7 @@ import { revealUp, sectionRise, prefersReducedMotion } from "../../lib/animation
 import corporateBg from "../../assets/images/services-corporate-bg.png";
 import contractsBg from "../../assets/images/services-contracts-bg.png";
 import investmentBg from "../../assets/images/services-investment-bg.png";
+import maBg from "../../assets/images/services-ma-bg.png";
 import counselBg from "../../assets/images/approach-counsel-bg.jpg";
 import solutionBg from "../../assets/images/approach-solution-bg.jpg";
 import strategyBg from "../../assets/images/approach-strategy-bg.jpg";
@@ -42,8 +43,8 @@ const SERVICES = [
     title: "M&A / Joint Ventures",
     tag: "Due Diligence / Structuring / Closing",
     desc: "Mergers, acquisitions, and joint ventures carried from due diligence through to signing, with commercial judgment intact at every stage.",
-    image: commitmentBg,
-    position: "68% center",
+    image: maBg,
+    position: "center 55%",
   },
   {
     n: "05",
