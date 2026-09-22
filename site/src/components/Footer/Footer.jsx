@@ -21,7 +21,7 @@ export default function Footer() {
           <Monogram size={52} />
           <span className="footer__divider" aria-hidden="true" />
           <div>
-            <p className="footer__name display-m">
+            <p className="footer__name">
               P.A. LEGAL
               <br />
               CONSULTANT CO., LTD.
@@ -59,6 +59,7 @@ export default function Footer() {
           </p>
           <div className="footer__legal">
             <a href="#" data-cursor="button">Privacy Policy</a>
+            <span className="footer__legal-sep" aria-hidden="true" />
             <a href="#" data-cursor="button">Terms of Use</a>
           </div>
         </div>
