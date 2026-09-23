@@ -78,12 +78,7 @@ export default function Contact() {
           <h2 className="display-xl contact__headline contact__reveal">
             <span className="contact__headline-accent">Let&rsquo;s</span>
             <br />
-            <span className="contact__headline-move">
-              move
-              <svg className="contact__swoosh" viewBox="0 0 260 60" fill="none" aria-hidden="true">
-                <path d="M2 40C60 5 140 5 258 30" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </span>
+            move
             <br />
             forward.
           </h2>
@@ -149,7 +144,11 @@ export default function Contact() {
               </span>
               <div>
                 <dt className="meta">Website</dt>
-                <dd className="contact__meta-placeholder">To be confirmed</dd>
+                <dd>
+                  <a href="https://www.pa-lc.com" target="_blank" rel="noreferrer" data-cursor="button">
+                    www.pa-lc.com
+                  </a>
+                </dd>
               </div>
             </div>
           </dl>

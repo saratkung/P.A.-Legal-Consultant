@@ -44,21 +44,6 @@
   color: var(--dark-blue);
 }
 
-.contact__headline-move {
-  position: relative;
-  display: inline-block;
-}
-
-.contact__swoosh {
-  position: absolute;
-  left: -12%;
-  top: 46%;
-  width: 130%;
-  height: auto;
-  pointer-events: none;
-  z-index: -1;
-}
-
 .contact__tagline {
   font-family: var(--font-body);
   font-size: 12px;
