@@ -102,9 +102,13 @@ const EXPERIENCE = [
 export default function Team() {
   const rootRef = useRef(null);
   const portraitRef = useRef(null);
+  const credentialsRef = useRef(null);
+  const closingRef = useRef(null);
 
   useEffect(() => {
     sectionRise(rootRef.current);
+    sectionRise(credentialsRef.current, { start: "top 90%", duration: 1.3 });
+    sectionRise(closingRef.current, { start: "top 92%", duration: 1.3 });
     revealUp(rootRef.current, ".founder__reveal", { stagger: 0.12, y: 28 });
     revealUp(rootRef.current, ".expertise-item", { trigger: ".founder__expertise-row", stagger: 0.06, y: 16 });
     revealUp(rootRef.current, ".founder__list-col", { stagger: 0.15, y: 24 });
@@ -159,6 +163,7 @@ export default function Team() {
 
       <div
         className="founder-credentials"
+        ref={credentialsRef}
         style={{
           backgroundImage: `linear-gradient(rgba(232, 229, 221, 0.85), rgba(232, 229, 221, 0.85)), url(${credentialsBg})`,
         }}
@@ -226,7 +231,7 @@ export default function Team() {
         </div>
       </div>
 
-      <div className="founder-closing">
+      <div className="founder-closing" ref={closingRef}>
         <span className="founder-closing__arc" aria-hidden="true" />
         <div className="container founder-closing__inner">
           <p className="founder-closing__statement">Counsel. Strategy. Solution.</p>
